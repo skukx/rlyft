@@ -1,5 +1,6 @@
 module Lyft
   class Client
+    include Api::Oauth
     include Api::Availability
     include Api::Rides
     include Api::Users
