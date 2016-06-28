@@ -1,28 +1,58 @@
 # Lyft
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/lyft`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Simple wrapper for interacting with Lyft's public api.
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'lyft'
+gem 'lyft', git: 'git@github.com:skukx/lyft.git'
 ```
 
 And then execute:
 
     $ bundle
 
-Or install it yourself as:
+## Setup
 
-    $ gem install lyft
+```ruby
+client = Lyft::Client.new do |c|
+  c.client_id = 'client_id'
+  c.client_secret = 'client_secret'
+end
+```
 
-## Usage
+## Using Public Api
+Calculate Lyft cost.
 
-TODO: Write usage instructions here
+```ruby
+client.cost start_lat: 37.7772,
+            start_lng: -122.4233,
+            end_lat: 37.7972,
+            end_lng: -122.4533
+```
+
+Time for nearest driver to reach location.
+
+```ruby
+client.eta lat: 37.7772,
+           lng: -122.4233
+```
+
+Get the location of nearby drivers.
+
+```ruby
+client.nearby_drivers lat: 37.7772,
+                      lng: -122.4233
+```
+
+Get available ride types.
+
+```ruby
+client.ride_types lat: 37.7772,
+                  lng: -122.4233
+```
 
 ## Development
 
@@ -38,4 +68,3 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/[USERN
 ## License
 
 The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
-
