@@ -1,7 +1,6 @@
 module Lyft
   module Api
     module Availability
-      require 'pry'
       def cost(args = {})
         uri = Lyft.endpoint('/v1/cost')
         options = {
