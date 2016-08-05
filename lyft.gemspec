@@ -4,7 +4,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'lyft/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "lyft"
+  spec.name          = "rlyft"
   spec.version       = Lyft::VERSION
   spec.authors       = ["Taylor Scott"]
   spec.email         = ["t.skukx@gmail.com"]
