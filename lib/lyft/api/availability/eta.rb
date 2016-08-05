@@ -8,8 +8,8 @@ module Lyft
             Authorization: "Bearer #{public_token.access_token}"
           }.as_json,
           query: {
-            lat: args[:lat] || 37.7772,
-            lng: args[:lng] || -122.4233
+            lat: args.fetch(:lat),
+            lng: args.fetch(:lng)
           }
         }
 
