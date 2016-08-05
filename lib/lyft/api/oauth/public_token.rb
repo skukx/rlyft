@@ -1,6 +1,11 @@
 module Lyft
   module Api
     module Oauth
+      ##
+      # Retrieve public oauth token.
+      #
+      # @todo Use same token until expires
+      #
       def public_token(renew = false)
         # return @public_token unless @public_token.nil? && !renew
 

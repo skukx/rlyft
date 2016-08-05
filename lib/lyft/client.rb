@@ -1,4 +1,10 @@
 module Lyft
+  ##
+  # Client for making Lyft api requests
+  #
+  # @attr [String] client_id The client id for lyft app.
+  # @attr [String] client_secret The client secret for lyft app.
+  #
   class Client
     include Api::Oauth
     include Api::Availability
