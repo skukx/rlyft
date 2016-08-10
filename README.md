@@ -7,7 +7,7 @@ Simple wrapper for interacting with Lyft's public api.
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'lyft', git: 'git@github.com:skukx/lyft.git'
+gem 'rlyft'
 ```
 
 And then execute:
