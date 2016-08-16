@@ -1,4 +1,4 @@
-# Lyft
+# RLyft
 [![Gem Version](https://badge.fury.io/rb/rlyft.svg)](https://badge.fury.io/rb/rlyft)
 
 Simple wrapper for interacting with Lyft's public api.
