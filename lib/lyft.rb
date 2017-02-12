@@ -1,14 +1,21 @@
+# Development gems
+require 'pry'
+
 # 3rd party Libraries
 require 'httparty'
 require 'active_support/all'
+require 'hashie'
 
-# Gem libraries
-Dir[File.dirname(__FILE__) + '/lyft/**/*.rb'].each { |file| require file }
+require 'lyft/client/configuration'
+require 'lyft/client/mashed_parser'
 
-module Lyft
-  API_URI = 'https://api.lyft.com'
+require 'lyft/client/api/base'
+require 'lyft/client/api/availability'
+require 'lyft/client/api/oauth'
+require 'lyft/client/api/rides'
+require 'lyft/client/api/user'
 
-  def self.endpoint(path)
-    API_URI + path
-  end
-end
+require 'lyft/client'
+require 'lyft/version'
+
+module Lyft; end
