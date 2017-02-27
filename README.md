@@ -1,5 +1,5 @@
 # RLyft
-[![Gem Version](https://badge.fury.io/rb/rlyft.svg)](https://badge.fury.io/rb/rlyft)
+[![Gem Version](https://badge.fury.io/rb/rlyft.svg)](https://badge.fury.io/rb/rlyft) [![API Testing](https://img.shields.io/badge/API%20Test-RapidAPI-blue.svg)](https://rapidapi.com/package/Lyft/functions?utm_source=LyftGithub&utm_medium=button&utm_content=Vender_GitHub)
 
 Simple wrapper for interacting with Lyft's public api.
 
