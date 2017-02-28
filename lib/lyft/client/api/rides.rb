@@ -5,12 +5,15 @@ module Lyft
         headers 'Content-Type': 'application/json'
 
         ENDPOINTS = {
-          request: '/v1/rides',
-          details: '/v1/rides/{{ride_id}}',
-          cancel: '/v1/rides/{{ride_id}}/cancel',
-          rating: '/v1/rides/{{ride_id}}/rating',
-          receipt: 'v1/rides/{{ride_id}}/receipt',
-          destination: '/v1/rides/{{ride_id}}/destination'
+          request: "/#{API_VERSION}/rides",
+          details: "/#{API_VERSION}/rides/{{ride_id}}",
+          cancel: "/#{API_VERSION}/rides/{{ride_id}}/cancel",
+          rating: "/#{API_VERSION}/rides/{{ride_id}}/rating",
+          receipt: "#{API_VERSION}/rides/{{ride_id}}/receipt",
+          destination: "/#{API_VERSION}/rides/{{ride_id}}/destination",
+          sandbox_primetime: "/#{API_VERSION}/sandbox/primetime",
+          sandbox_rides: "/#{API_VERSION}/sandbox/rides/{{ride_id}}",
+          sandbox_ridetypes: "/#{API_VERSION}/sandbox/ridetypes/{{ride_type}}"
         }
 
         ##
@@ -121,6 +124,108 @@ module Lyft
             access_token: args.delete(:access_token),
             options: { body: args.to_json }
           )
+        end
+
+        ##
+        # Preset the ridetypes in area.
+        #
+        # @raise [RuntimeError] Raises if not in sandbox mode.
+        # @param [Hash] args
+        # @option args [String] :access_token (*required*)
+        # @option args [Float] :lat (*required*)
+        # @option args [Float] :lng (*required*)
+        # @option args [Array<String>] :ride_types The ride types to make available.
+        #   Accepted values are 'lyft', 'lyft_line', 'lyft_plus', and 'lyft_suv'.
+        #
+        def set_ridetypes(args = {})
+          validate_sandboxed
+          make_request(
+            http_method: :put,
+            endpoint: path_for(:sandbox_ridetypes),
+            access_token: args.delete(:access_token),
+            options: { body: args.to_json }
+          )
+        end
+
+        ##
+        # Propogate ride through different states.
+        #
+        # @raise [RuntimeError] Raises if not in sandbox mode.
+        # @param [Hash] args
+        # @option args [String] :access_token (*required*)
+        # @option args [String] :ride_id (*required*)
+        # @option args [String] :status The status of the ride
+        #
+        def set_status(args = {})
+          validate_sandboxed
+          make_request(
+            http_method: :put,
+            endpoint: path_for(:sandbox_rides, ride_id: args.delete(:ride_id)),
+            access_token: args.delete(:access_token),
+            options: { body: args.to_json }
+          )
+        end
+
+        ##
+        # Set the primetime percentage in area
+        #
+        # @example Set the prime time percentage.
+        #   client.rides.set_primetime(
+        #     access_token: 'my_token',
+        #     lat: 37.7833,
+        #     lng: -122.4167,
+        #     primetime_percentage: '25%'
+        #   )
+        #
+        # @raise [RuntimeError] Raises if not in sandbox mode.
+        # @param [Hash] args
+        # @option args [String] :access_token (*required*)
+        # @option args [Float] :lat (*required*)
+        # @option args [Float] :lng (*required*)
+        # @option args [String] :primetime_percentage
+        #
+        def set_primetime(args = {})
+          validate_sandboxed
+          make_request(
+            http_method: :put,
+            endpoint: path_for(:sandbox_primetime),
+            access_token: args.delete(:access_token),
+            options: { body: args.to_json }
+          )
+        end
+
+        ##
+        # Set driver availability for a ride type in an
+        # area.
+        #
+        # @raise [RuntimeError] Raises if not in sandbox mode.
+        # @raise [ArgumentError] Raises if invalid ride type.
+        # @option args [String] :access_token (*required*)
+        # @option args [String] :ride_type (*required*)
+        # @option args [Float] :lat (*required*)
+        # @option args [Float] :lng (*required*)
+        # @option args [Boolean] :driver_availability
+        #
+        def set_driver_availability(args = {})
+          validate_sandboxed
+          raise ArgumentError, 'Invalid Ride Type' unless Lyft::Ride::RIDE_TYPES.include? args[:ride_type]
+
+          make_request(
+            http_method: :put,
+            endpoint: path_for(:sandbox_ridetypes, ride_type: args.delete(:ride_type)),
+            access_token: args.delete(:access_token),
+            options: { body: args.to_json }
+          )
+        end
+
+        private
+
+        ##
+        # Validates if the current configuration is using lyft sandbox.
+        # @raise [RuntimeError] Raises if not in sandbox mode.
+        #
+        def validate_sandboxed
+          raise RuntimeError, 'This method is only available in sandbox mode.' unless @configuration.sandbox?
         end
       end
     end

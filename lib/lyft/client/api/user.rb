@@ -3,8 +3,8 @@ module Lyft
     module Api
       class User < Lyft::Client::Api::Base
         ENDPOINTS = {
-          history: '/v1/rides',
-          profile: '/v1/profile'
+          history: "/#{API_VERSION}/rides",
+          profile: "/#{API_VERSION}/profile"
         }
 
         ##

@@ -6,6 +6,8 @@ module Lyft
         base_uri 'https://api.lyft.com'
         parser Lyft::Client::MashedParser
 
+        API_VERSION = ENV['LYFT_API_VERSION'] || 'v1'
+
         ENDPOINTS = {}
         DEFAULT_VALIDATES = [:access_token]
 

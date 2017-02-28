@@ -3,10 +3,10 @@ module Lyft
     module Api
       class Availability < Lyft::Client::Api::Base
         ENDPOINTS = {
-          cost: '/v1/cost',
-          eta: '/v1/eta',
-          nearby_drivers: '/v1/drivers',
-          ride_types: '/v1/ridetypes'
+          cost: "/#{API_VERSION}/cost",
+          eta: "/#{API_VERSION}/eta",
+          nearby_drivers: "/#{API_VERSION}/drivers",
+          ride_types: "/#{API_VERSION}/ridetypes"
         }
 
         ##

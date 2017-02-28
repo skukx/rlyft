@@ -6,6 +6,9 @@ require 'httparty'
 require 'active_support/all'
 require 'hashie'
 
+require 'lyft/ride'
+require 'lyft/version'
+
 require 'lyft/client/configuration'
 require 'lyft/client/mashed_parser'
 
@@ -16,6 +19,5 @@ require 'lyft/client/api/rides'
 require 'lyft/client/api/user'
 
 require 'lyft/client'
-require 'lyft/version'
 
 module Lyft; end
