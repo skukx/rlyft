@@ -9,7 +9,7 @@ module Lyft
           details: "/#{API_VERSION}/rides/{{ride_id}}",
           cancel: "/#{API_VERSION}/rides/{{ride_id}}/cancel",
           rating: "/#{API_VERSION}/rides/{{ride_id}}/rating",
-          receipt: "#{API_VERSION}/rides/{{ride_id}}/receipt",
+          receipt: "/#{API_VERSION}/rides/{{ride_id}}/receipt",
           destination: "/#{API_VERSION}/rides/{{ride_id}}/destination",
           sandbox_primetime: "/#{API_VERSION}/sandbox/primetime",
           sandbox_rides: "/#{API_VERSION}/sandbox/rides/{{ride_id}}",
@@ -89,6 +89,7 @@ module Lyft
             options: { body: args.to_json }
           )
         end
+        alias_method :tip, :rate
 
         ##
         # Get receipt for ride
@@ -225,7 +226,7 @@ module Lyft
         # @raise [RuntimeError] Raises if not in sandbox mode.
         #
         def validate_sandboxed
-          raise RuntimeError, 'This method is only available in sandbox mode.' unless @configuration.sandbox?
+          raise 'This method is only available in sandbox mode.' unless @configuration.sandbox?
         end
       end
     end

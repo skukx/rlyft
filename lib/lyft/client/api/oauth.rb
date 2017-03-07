@@ -58,7 +58,7 @@ module Lyft
           body = {}
           body[:grant_type] = grant_type
           body[:scope] = scope unless authorization_code.present?
-          body[:authorization_code] = authorization_code if authorization_code.present?
+          body[:code] = authorization_code if authorization_code.present?
 
           body
         end

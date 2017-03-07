@@ -1,0 +1,192 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.lyft.com/v1/rides
+    body:
+      encoding: UTF-8
+      string: '{"origin":{"lat":37.7772,"lng":-122.4233},"destination":{"lat":37.7972,"lng":-122.4533},"ride_type":"lyft"}'
+    headers:
+      Content-Type:
+      - application/json
+      Authorization:
+      - "<ACCESS_TOKEN>"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Server:
+      - envoy-sfo
+      Date:
+      - Thu, 09 Mar 2017 03:20:51 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '365'
+      X-Ratelimit-Remaining:
+      - '4'
+      X-Ratelimit-Limit:
+      - '5'
+      Request-Id:
+      - 4c69a0d0-fa7b-9425-b3e0-ec309ef0c48b
+      X-Envoy-Upstream-Service-Time:
+      - '137'
+    body:
+      encoding: UTF-8
+      string: '{"status": "pending", "ride_id": "17833812332380341888", "ride_type":
+        "lyft", "passenger": {"rating": null, "first_name": "Jane", "last_name": "Doe",
+        "image_url": "https://public-api.lyft.com/static/images/user.png", "user_id":
+        null}, "destination": {"lat": 37.7972, "lng": -122.4533, "address": null},
+        "origin": {"lat": 37.7772, "lng": -122.4233, "address": null}}'
+    http_version: 
+  recorded_at: Thu, 09 Mar 2017 03:20:51 GMT
+- request:
+    method: put
+    uri: https://api.lyft.com/v1/sandbox/rides/17833812332380341888
+    body:
+      encoding: UTF-8
+      string: '{"status":"accepted"}'
+    headers:
+      Content-Type:
+      - application/json
+      Authorization:
+      - "<ACCESS_TOKEN>"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - envoy-sfo
+      Date:
+      - Thu, 09 Mar 2017 03:20:51 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '57'
+      X-Ratelimit-Remaining:
+      - '9999'
+      X-Ratelimit-Limit:
+      - '10000'
+      Request-Id:
+      - 702d36d7-7e93-9bcb-bbdd-67e14c570310
+      X-Envoy-Upstream-Service-Time:
+      - '118'
+    body:
+      encoding: UTF-8
+      string: '{"status": "accepted", "ride_id": "17833812332380341888"}'
+    http_version: 
+  recorded_at: Thu, 09 Mar 2017 03:20:52 GMT
+- request:
+    method: put
+    uri: https://api.lyft.com/v1/sandbox/rides/17833812332380341888
+    body:
+      encoding: UTF-8
+      string: '{"status":"arrived"}'
+    headers:
+      Content-Type:
+      - application/json
+      Authorization:
+      - "<ACCESS_TOKEN>"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - envoy-sfo
+      Date:
+      - Thu, 09 Mar 2017 03:20:52 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '56'
+      X-Ratelimit-Remaining:
+      - '9998'
+      X-Ratelimit-Limit:
+      - '10000'
+      Request-Id:
+      - 6f9dd815-4501-9825-ae32-98fa9960df70
+      X-Envoy-Upstream-Service-Time:
+      - '104'
+    body:
+      encoding: UTF-8
+      string: '{"status": "arrived", "ride_id": "17833812332380341888"}'
+    http_version: 
+  recorded_at: Thu, 09 Mar 2017 03:20:52 GMT
+- request:
+    method: put
+    uri: https://api.lyft.com/v1/sandbox/rides/17833812332380341888
+    body:
+      encoding: UTF-8
+      string: '{"status":"pickedUp"}'
+    headers:
+      Content-Type:
+      - application/json
+      Authorization:
+      - "<ACCESS_TOKEN>"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - envoy-sfo
+      Date:
+      - Thu, 09 Mar 2017 03:20:52 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '57'
+      X-Ratelimit-Remaining:
+      - '9997'
+      X-Ratelimit-Limit:
+      - '10000'
+      Request-Id:
+      - 913f8c38-dfb6-980b-b6ef-148421d8a4b6
+      X-Envoy-Upstream-Service-Time:
+      - '105'
+    body:
+      encoding: UTF-8
+      string: '{"status": "pickedUp", "ride_id": "17833812332380341888"}'
+    http_version: 
+  recorded_at: Thu, 09 Mar 2017 03:20:53 GMT
+- request:
+    method: put
+    uri: https://api.lyft.com/v1/sandbox/rides/17833812332380341888
+    body:
+      encoding: UTF-8
+      string: '{"status":"droppedOff"}'
+    headers:
+      Content-Type:
+      - application/json
+      Authorization:
+      - "<ACCESS_TOKEN>"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - envoy-sfo
+      Date:
+      - Thu, 09 Mar 2017 03:20:53 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '59'
+      X-Ratelimit-Remaining:
+      - '9996'
+      X-Ratelimit-Limit:
+      - '10000'
+      Request-Id:
+      - 74162552-9f76-9640-bf18-7c4bf1970fbe
+      X-Envoy-Upstream-Service-Time:
+      - '116'
+    body:
+      encoding: UTF-8
+      string: '{"status": "droppedOff", "ride_id": "17833812332380341888"}'
+    http_version: 
+  recorded_at: Thu, 09 Mar 2017 03:20:53 GMT
+recorded_with: VCR 3.0.3

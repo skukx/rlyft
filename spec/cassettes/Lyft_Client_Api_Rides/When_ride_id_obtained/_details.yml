@@ -1,0 +1,89 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.lyft.com/v1/rides
+    body:
+      encoding: UTF-8
+      string: '{"origin":{"lat":37.7772,"lng":-122.4233},"destination":{"lat":37.7972,"lng":-122.4533},"ride_type":"lyft"}'
+    headers:
+      Content-Type:
+      - application/json
+      Authorization:
+      - "<ACCESS_TOKEN>"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Server:
+      - envoy-sfo
+      Date:
+      - Thu, 09 Mar 2017 03:03:24 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '365'
+      X-Ratelimit-Remaining:
+      - '4'
+      X-Ratelimit-Limit:
+      - '5'
+      Request-Id:
+      - 516e98ce-5902-9b1a-b4f1-6d20b6019411
+      X-Envoy-Upstream-Service-Time:
+      - '125'
+    body:
+      encoding: UTF-8
+      string: '{"status": "pending", "ride_id": "15434984822392948838", "ride_type":
+        "lyft", "passenger": {"rating": null, "first_name": "Jane", "last_name": "Doe",
+        "image_url": "https://public-api.lyft.com/static/images/user.png", "user_id":
+        null}, "destination": {"lat": 37.7972, "lng": -122.4533, "address": null},
+        "origin": {"lat": 37.7772, "lng": -122.4233, "address": null}}'
+    http_version: 
+  recorded_at: Thu, 09 Mar 2017 03:03:24 GMT
+- request:
+    method: get
+    uri: https://api.lyft.com/v1/rides/15434984822392948838
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Content-Type:
+      - application/json
+      Authorization:
+      - "<ACCESS_TOKEN>"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - envoy-sfo
+      Date:
+      - Thu, 09 Mar 2017 03:03:24 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '670'
+      X-Ratelimit-Remaining:
+      - '999'
+      X-Ratelimit-Limit:
+      - '1000'
+      Request-Id:
+      - ed17ba75-41ef-9bf4-bafd-7918b1c976bb
+      X-Envoy-Upstream-Service-Time:
+      - '99'
+    body:
+      encoding: UTF-8
+      string: '{"status": "pending", "passenger": {"rating": null, "first_name": "Jane",
+        "last_name": "Doe", "image_url": "https://public-api.lyft.com/static/images/user.png",
+        "user_id": null}, "ride_type": "lyft", "ride_id": "15434984822392948838",
+        "requested_at": "2017-03-09T03:03:24.912025+00:00", "destination": {"lat":
+        37.7972, "lng": -122.4533, "eta_seconds": null, "address": null}, "primetime_percentage":
+        "0%", "route_url": "https://example.com", "location": {"lat": 37.7772, "bearing":
+        null, "lng": -122.4233}, "generated_at": "2017-03-09T03:03:24.912030+00:00",
+        "ride_profile": "personal", "origin": {"lat": 37.7772, "lng": -122.4233, "eta_seconds":
+        null, "address": null}}'
+    http_version: 
+  recorded_at: Thu, 09 Mar 2017 03:03:25 GMT
+recorded_with: VCR 3.0.3
