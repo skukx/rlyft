@@ -7,25 +7,12 @@ module Lyft
     # List of values for ride types
     # @return [Array<String>] A list of ride type values
     #
-    RIDE_TYPES = [
-      Lyft::Ride::Type::LYFT,
-      Lyft::Ride::Type::LYFT_LINE,
-      Lyft::Ride::Type::LYFT_PLUS,
-      Lyft::Ride::Type::LYFT_SUV
-    ]
+    RIDE_TYPES = Lyft::Ride::Type.constants.map { |c| Lyft::Ride::Type.const_get(c) }
 
     ##
     # List of values for ride status
     # @return [Array<String>] A list of ride status values
     #
-    RIDE_STATUSES = [
-      Lyft::Ride::Status::PENDING,
-      Lyft::Ride::Status::ACCEPTED,
-      Lyft::Ride::Status::ARRIVED,
-      Lyft::Ride::Status::PICKED_UP,
-      Lyft::Ride::Status::DROPPED_OFF,
-      Lyft::Ride::Status::CANCELED,
-      Lyft::Ride::Status::UNKNOWN,
-    ]
+    RIDE_STATUSES = Lyft::Ride::Status.constants.map { |c| Lyft::Ride::Status.const_get(c) }
   end
 end
