@@ -86,8 +86,8 @@ module Lyft
         def set_authorization_header(access_token)
           self.class.default_options[:headers] ||= {}
           self.class
-            .default_options[:headers]
-            .merge! Authorization: "Bearer #{access_token}"
+              .default_options[:headers]
+              .merge! Authorization: "Bearer #{access_token}"
         end
       end
     end

@@ -29,13 +29,12 @@ module Lyft
         # @option args [Float] :end_lng The longitude of the end point. (*required*)
         #
         def cost(args = {})
-          path = path_for(:cost)
-
-          valid_keys = [:start_lat, :start_lng, :end_lat, :end_lng]
-          validate_args(args, valid_keys)
-          set_authorization_header(args.delete(:access_token))
-
-          self.class.get(path, query: args)
+          make_request(
+            http_method: :get,
+            endpoint: path_for(:cost),
+            access_token: args.delete(:access_token),
+            options: { query: args }
+          )
         end
 
         ##

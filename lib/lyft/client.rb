@@ -3,7 +3,6 @@ module Lyft
   # Client for making Lyft api requests
   #
   class Client
-
     ##
     # Keep track of what we are namespacing.
     #
@@ -36,25 +35,25 @@ module Lyft
 
     ##
     # Class to handle availability api calls.
-    # @return Lyft::Client::Oauth
+    # @return Lyft::Client::Api::Oauth
     #
     namespace :oauth
 
     ##
     # Class to handle availability api calls.
-    # @return Lyft::Client::Availability
+    # @return Lyft::Client::Api::Availability
     #
     namespace :availability
 
     ##
     # Class to handle availability api calls.
-    # @return Lyft::Client::Rides
+    # @return Lyft::Client::Api::Rides
     #
     namespace :rides
 
     ##
     # Class to handle availability api calls.
-    # @return Lyft::Client::User
+    # @return Lyft::Client::Api::User
     #
     namespace :user
 

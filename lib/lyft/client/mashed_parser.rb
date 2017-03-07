@@ -21,7 +21,7 @@ module Lyft
         if body.is_a? Hash
           Hashie::Mash.new body
         elsif body.is_a? Array
-          body.map &method(:mashed)
+          body.map(&method(:mashed))
         else
           body
         end

@@ -225,7 +225,7 @@ module Lyft
         # @raise [RuntimeError] Raises if not in sandbox mode.
         #
         def validate_sandboxed
-          raise RuntimeError, 'This method is only available in sandbox mode.' unless @configuration.sandbox?
+          raise 'This method is only available in sandbox mode.' unless @configuration.sandbox?
         end
       end
     end

@@ -1,0 +1,22 @@
+AllCops:
+  Exclude:
+    - bin/**/*
+    - spec/**/*
+    - lyft_setup.rb
+    - lyft.gemspec
+    - Rakefile
+  TargetRubyVersion: 2.3
+Metrics/BlockLength:
+  Enabled: false
+Metrics/LineLength:
+  Enabled: false
+Style/AccessorMethodName:
+  Enabled: false
+Style/ClassVars:
+  Enabled: false
+Style/Documentation:
+  Enabled: false
+Style/FrozenStringLiteralComment:
+  Enabled: false
+Style/MutableConstant:
+  Enabled: false

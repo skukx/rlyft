@@ -1,0 +1,43 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.lyft.com/v1/eta?lat=37.7772&lng=-122.4233
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - "<ACCESS_TOKEN>"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - envoy-sfo
+      Date:
+      - Tue, 07 Mar 2017 05:56:20 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '498'
+      X-Ratelimit-Remaining:
+      - '9999'
+      X-Ratelimit-Limit:
+      - '10000'
+      Request-Id:
+      - 9d67da2f-e115-946d-8285-b6c84a9e5178
+      X-Envoy-Upstream-Service-Time:
+      - '544'
+    body:
+      encoding: UTF-8
+      string: '{"eta_estimates": [{"display_name": "Lyft Line", "is_valid_estimate":
+        true, "eta_timestamp_ms": null, "eta_range_ms": null, "ride_type": "lyft_line",
+        "eta_seconds": 60}, {"display_name": "Lyft", "is_valid_estimate": true, "eta_timestamp_ms":
+        null, "eta_range_ms": null, "ride_type": "lyft", "eta_seconds": 60}, {"display_name":
+        "Lyft Plus", "is_valid_estimate": true, "eta_timestamp_ms": null, "eta_range_ms":
+        null, "ride_type": "lyft_plus", "eta_seconds": 240}], "timezone": "America/Los_Angeles"}'
+    http_version: 
+  recorded_at: Tue, 07 Mar 2017 05:56:21 GMT
+recorded_with: VCR 3.0.3
