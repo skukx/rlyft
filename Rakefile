@@ -1,2 +1,10 @@
 require "bundler/gem_tasks"
-task :default => :spec
+require 'rspec/core/rake_task'
+
+begin
+  RSpec::Core::RakeTask.new(:spec)
+
+  task default: :spec
+rescue LoadError
+  # no rspec available
+end

@@ -1,0 +1,38 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.lyft.com/v1/profile
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - "<ACCESS_TOKEN>"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - envoy-sfo
+      Date:
+      - Thu, 09 Mar 2017 03:48:55 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '28'
+      X-Ratelimit-Remaining:
+      - '4'
+      X-Ratelimit-Limit:
+      - '5'
+      Request-Id:
+      - 40e16ca2-1c19-9218-89b8-ed0527199091
+      X-Envoy-Upstream-Service-Time:
+      - '111'
+    body:
+      encoding: UTF-8
+      string: '{"id": "803485868844577360"}'
+    http_version: 
+  recorded_at: Thu, 09 Mar 2017 03:48:55 GMT
+recorded_with: VCR 3.0.3

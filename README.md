@@ -1,5 +1,6 @@
 # RLyft
 [![Gem Version](https://badge.fury.io/rb/rlyft.svg)](https://badge.fury.io/rb/rlyft)
+[![CircleCI](https://circleci.com/gh/skukx/rlyft.svg?style=shield)](https://circleci.com/gh/skukx/rlyft)
 
 Simple wrapper for interacting with Lyft's public api.
 
@@ -18,41 +19,117 @@ And then execute:
 ## Setup
 
 ```ruby
-client = Lyft::Client.new do |c|
-  c.client_id = 'client_id'
-  c.client_secret = 'client_secret'
-end
+client = Lyft::Client.new(
+  client_id: 'client_id',
+  client_secret: 'client_secret',
+  debug_output: STDOUT,
+  use_sandbox: true
+)
 ```
 
 ## Using Public Api
+Get Access Token:
+
+```ruby
+# Public token
+client.authentication.retrieve_access_token
+
+# When using oauth.
+client.authentication.retrieve_access_token authorization_code: 'auth_code'
+```
+
 Calculate Lyft cost.
 
 ```ruby
-client.cost start_lat: 37.7772,
-            start_lng: -122.4233,
-            end_lat: 37.7972,
-            end_lng: -122.4533
+client.availability.cost access_token: 'access_token'
+                         start_lat: 37.7772,
+                         start_lng: -122.4233,
+                         end_lat: 37.7972,
+                         end_lng: -122.4533
 ```
 
 Time for nearest driver to reach location.
 
 ```ruby
-client.eta lat: 37.7772,
-           lng: -122.4233
+client.availability.eta access_token: 'token',
+                        lat: 37.7772,
+                        lng: -122.4233
 ```
 
 Get the location of nearby drivers.
 
 ```ruby
-client.nearby_drivers lat: 37.7772,
-                      lng: -122.4233
+client.availability.nearby_drivers access_token: 'token',
+                                   lat: 37.7772,
+                                   lng: -122.4233
 ```
 
 Get available ride types.
 
 ```ruby
-client.ride_types lat: 37.7772,
-                  lng: -122.4233
+client.availability.ride_types access_token: 'token',
+                               lat: 37.7772,
+                               lng: -122.4233
+```
+
+Request a ride
+```ruby
+client.rides.request access_token: 'token',
+                     origin: { lat: 37.7772, lng: -122.4233 },
+                     ride_type: 'lyft'
+```
+
+Cancel a ride
+```ruby
+client.rides.cancel access_token: 'token',
+                    ride_id: '123'
+
+# When cancel_confirmation_token is needed.
+client.rides.cancel access_token: 'token',
+                    ride_id: '123',
+                    cancel_confirmation_token: 'cancellation_token'
+```
+
+## Using the Sandbox:
+
+Set available ride types
+```ruby
+client.rides.set_ridetypes(
+  access_token: 'my_token',
+  lat: 37.7833,
+  lng: -122.4167,
+  ride_types: [Lyft::Ride::Type::LYFT, Lyft::Ride::Type::LYFT_PLUS]
+)
+```
+
+Set ride status
+```ruby
+client.rides.set_status(
+  access_token: 'my_token',
+  ride_id: 'my_ride_id',
+  status: Lyft::Ride::Status::ACCEPTED
+)
+```
+
+Set driver availability
+```ruby
+client.rides.set_driver_availability(
+  access_token: 'my_token',
+  ride_type: Lyft::Ride::Type::LYFT_SUV
+  lat: 37.7833,
+  lng: -122.4167,
+  driver_availability: true
+)
+```
+
+Set primetime percentage
+```ruby
+client.rides.set_primetime(
+  access_token: 'my_token',
+  lat: 37.7833,
+  lng: -122.4167,
+  primetime_percentage: '25%'
+)
 ```
 
 ## Development

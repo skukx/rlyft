@@ -29,10 +29,15 @@ Gem::Specification.new do |spec|
 
   spec.add_runtime_dependency 'httparty'
   spec.add_runtime_dependency 'activesupport'
+  spec.add_runtime_dependency 'hashie'
 
   spec.add_development_dependency "bundler", "~> 1.11"
   spec.add_development_dependency "rake", "~> 10.0"
   spec.add_development_dependency "rspec"
+  spec.add_development_dependency "rspec-its"
+  spec.add_development_dependency "rubocop", "~> 0.47.1"
   spec.add_development_dependency "pry"
+  spec.add_development_dependency "vcr"
+  spec.add_development_dependency "webmock"
   spec.add_development_dependency "yard"
 end

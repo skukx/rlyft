@@ -1,0 +1,44 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.lyft.com/v1/rides
+    body:
+      encoding: UTF-8
+      string: '{"origin":{"lat":37.7772,"lng":-122.4233},"destination":{"lat":37.7972,"lng":-122.4533},"ride_type":"lyft"}'
+    headers:
+      Content-Type:
+      - application/json
+      Authorization:
+      - "<ACCESS_TOKEN>"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Server:
+      - envoy-sfo
+      Date:
+      - Thu, 09 Mar 2017 02:47:27 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '365'
+      X-Ratelimit-Remaining:
+      - '4'
+      X-Ratelimit-Limit:
+      - '5'
+      Request-Id:
+      - 6a082e77-882f-98f8-a21d-19c1b2cba9da
+      X-Envoy-Upstream-Service-Time:
+      - '138'
+    body:
+      encoding: UTF-8
+      string: '{"status": "pending", "ride_id": "11912272295895475709", "ride_type":
+        "lyft", "passenger": {"rating": null, "first_name": "Jane", "last_name": "Doe",
+        "image_url": "https://public-api.lyft.com/static/images/user.png", "user_id":
+        null}, "destination": {"lat": 37.7972, "lng": -122.4533, "address": null},
+        "origin": {"lat": 37.7772, "lng": -122.4233, "address": null}}'
+    http_version: 
+  recorded_at: Thu, 09 Mar 2017 02:47:27 GMT
+recorded_with: VCR 3.0.3

@@ -8,3 +8,6 @@
 /spec/reports/
 /tmp/
 lyft_setup.rb
+
+# Ignore application configuration
+/config/application.yml

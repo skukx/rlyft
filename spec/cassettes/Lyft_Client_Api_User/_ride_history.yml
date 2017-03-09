@@ -1,0 +1,120 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.lyft.com/v1/rides?start_time=2015-12-01T21:04:22Z
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - "<ACCESS_TOKEN>"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - envoy-sfo
+      Date:
+      - Thu, 09 Mar 2017 03:48:05 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '6904'
+      X-Ratelimit-Remaining:
+      - '999'
+      X-Ratelimit-Limit:
+      - '1000'
+      Request-Id:
+      - 7f7fb45f-4c0d-9915-a557-a3eee69f84ea
+      X-Envoy-Upstream-Service-Time:
+      - '99'
+    body:
+      encoding: UTF-8
+      string: '{"ride_history": [{"status": "pending", "passenger": {"rating": null,
+        "first_name": "Jane", "last_name": "Doe", "image_url": "https://public-api.lyft.com/static/images/user.png",
+        "user_id": null}, "ride_type": "lyft", "ride_id": "396919970095936344", "requested_at":
+        "2017-03-09T03:48:05.593685+00:00", "destination": {"lat": 37.790618, "lng":
+        -122.399735, "eta_seconds": null, "address": "540 Market St SF CA 94104"},
+        "primetime_percentage": "0%", "route_url": "https://example.com", "location":
+        {"lat": 37.794357, "bearing": null, "lng": -122.394982}, "generated_at": "2017-03-09T03:48:05.593690+00:00",
+        "ride_profile": "personal", "origin": {"lat": 37.794357, "lng": -122.394982,
+        "eta_seconds": null, "address": "1 Market St, SF, CA 94105"}}, {"status":
+        "accepted", "origin": {"lat": 37.794357, "lng": -122.394982, "eta_seconds":
+        200, "address": "1 Market St, SF, CA 94105"}, "ride_type": "lyft", "passenger":
+        {"rating": null, "first_name": "Jane", "last_name": "Doe", "image_url": "https://public-api.lyft.com/static/images/user.png",
+        "user_id": null}, "requested_at": "2017-03-09T03:48:05.593727+00:00", "destination":
+        {"lat": 37.790618, "lng": -122.399735, "eta_seconds": null, "address": "540
+        Market St SF CA 94104"}, "driver": {"phone_number": "+15005556172", "rating":
+        "5.0", "first_name": "Jayme", "image_url": "https://public-api.lyft.com/static/images/user.png"},
+        "primetime_percentage": "0%", "can_cancel": ["passenger", "driver", "dispatcher"],
+        "route_url": "https://example.com", "ride_id": "12526398850742666855", "vehicle":
+        {"color": "Blue", "make": "Toyota", "license_plate": "AAAAAAA", "image_url":
+        "https://public-api.lyft.com/static/images/prius_blue.png", "year": 2014,
+        "license_plate_state": "CA", "model": "Prius"}, "generated_at": "2017-03-09T03:48:05.593731+00:00",
+        "ride_profile": "personal", "location": {"lat": 37.794357, "bearing": null,
+        "lng": -122.394982}}, {"status": "arrived", "origin": {"lat": 37.794357, "lng":
+        -122.394982, "eta_seconds": null, "address": "1 Market St, SF, CA 94105"},
+        "ride_type": "lyft", "passenger": {"rating": null, "first_name": "Jane", "last_name":
+        "Doe", "image_url": "https://public-api.lyft.com/static/images/user.png",
+        "user_id": null}, "requested_at": "2017-03-09T03:48:05.593778+00:00", "destination":
+        {"lat": 37.790618, "lng": -122.399735, "eta_seconds": null, "address": "540
+        Market St SF CA 94104"}, "driver": {"phone_number": "+15005553337", "rating":
+        "5.0", "first_name": "Jayme", "image_url": "https://public-api.lyft.com/static/images/user.png"},
+        "primetime_percentage": "0%", "can_cancel": ["driver"], "pickup": {"lat":
+        37.794357, "lng": -122.394982, "time": "2017-03-09T03:48:05.593799+00:00",
+        "address": ""}, "route_url": "https://example.com", "ride_id": "15358799859935068010",
+        "vehicle": {"color": "Blue", "make": "Toyota", "license_plate": "AAAAAAA",
+        "image_url": "https://public-api.lyft.com/static/images/prius_blue.png", "year":
+        2014, "license_plate_state": "CA", "model": "Prius"}, "generated_at": "2017-03-09T03:48:05.593782+00:00",
+        "ride_profile": "personal", "location": {"lat": 37.794357, "bearing": null,
+        "lng": -122.394982}}, {"status": "pickedUp", "origin": {"lat": 37.794357,
+        "lng": -122.394982, "eta_seconds": null, "address": "1 Market St, SF, CA 94105"},
+        "ride_type": "lyft", "passenger": {"rating": null, "first_name": "Jane", "last_name":
+        "Doe", "image_url": "https://public-api.lyft.com/static/images/user.png",
+        "user_id": null}, "requested_at": "2017-03-09T03:48:05.593825+00:00", "destination":
+        {"lat": 37.790618, "lng": -122.399735, "eta_seconds": 600, "address": "540
+        Market St SF CA 94104"}, "driver": {"phone_number": "+15005558665", "rating":
+        "5.0", "first_name": "Jayme", "image_url": "https://public-api.lyft.com/static/images/user.png"},
+        "primetime_percentage": "0%", "can_cancel": ["driver"], "pickup": {"lat":
+        37.794357, "lng": -122.394982, "time": "2017-03-09T03:48:05.593845+00:00",
+        "address": ""}, "route_url": "https://example.com", "ride_id": "3932615503180729748",
+        "vehicle": {"color": "Blue", "make": "Toyota", "license_plate": "AAAAAAA",
+        "image_url": "https://public-api.lyft.com/static/images/prius_blue.png", "year":
+        2014, "license_plate_state": "CA", "model": "Prius"}, "generated_at": "2017-03-09T03:48:05.593829+00:00",
+        "ride_profile": "personal", "location": {"lat": 37.794357, "bearing": null,
+        "lng": -122.394982}}, {"status": "droppedOff", "line_items": [{"currency":
+        "USD", "amount": 500, "type": "Ride"}, {"currency": "USD", "amount": 100,
+        "type": "Tip"}, {"currency": "USD", "amount": 155, "type": "Service fee"},
+        {"currency": "USD", "amount": 0, "type": "Prime Time"}], "passenger": {"rating":
+        null, "first_name": "Jane", "last_name": "Doe", "image_url": "https://public-api.lyft.com/static/images/user.png",
+        "user_id": null}, "ride_type": "lyft", "dropoff": {"lat": 37.790618, "lng":
+        -122.399735, "time": "2017-03-09T03:48:05.593896+00:00", "address": "540 Market
+        St SF CA 94104"}, "requested_at": "2017-03-09T03:48:05.593870+00:00", "price":
+        {"currency": "USD", "amount": 755, "description": "Total ride price"}, "destination":
+        {"lat": 37.790618, "lng": -122.399735, "eta_seconds": null, "address": "540
+        Market St SF CA 94104"}, "driver": {"phone_number": "+15005553163", "rating":
+        "5.0", "first_name": "Jayme", "image_url": "https://public-api.lyft.com/static/images/user.png"},
+        "primetime_percentage": "0%", "pickup": {"lat": 37.794357, "lng": -122.394982,
+        "time": "2017-03-09T03:48:05.593889+00:00", "address": ""}, "route_url": "https://example.com",
+        "ride_id": "11280809491447533914", "vehicle": {"color": "Blue", "make": "Toyota",
+        "license_plate": "AAAAAAA", "image_url": "https://public-api.lyft.com/static/images/prius_blue.png",
+        "year": 2014, "license_plate_state": "CA", "model": "Prius"}, "generated_at":
+        "2017-03-09T03:48:05.593874+00:00", "ride_profile": "personal", "origin":
+        {"lat": 37.794357, "lng": -122.394982, "eta_seconds": null, "address": "1
+        Market St, SF, CA 94105"}, "location": {"lat": 37.790618, "bearing": null,
+        "lng": -122.399735}}, {"status": "canceled", "line_items": [{"currency": "USD",
+        "amount": 1000, "type": "Cancel Fee"}], "ride_type": "lyft", "passenger":
+        {"rating": null, "first_name": "Jane", "last_name": "Doe", "image_url": "https://public-api.lyft.com/static/images/user.png",
+        "user_id": null}, "canceled_by": "driver", "requested_at": "2017-03-09T03:48:05.593931+00:00",
+        "price": {"currency": "USD", "amount": 1000, "description": "Total ride price"},
+        "destination": {"lat": 37.790618, "lng": -122.399735, "eta_seconds": null,
+        "address": "540 Market St SF CA 94104"}, "primetime_percentage": "0%", "route_url":
+        "https://example.com", "ride_id": "7132506574585351991", "generated_at": "2017-03-09T03:48:05.593935+00:00",
+        "ride_profile": "personal", "origin": {"lat": 37.794357, "lng": -122.394982,
+        "eta_seconds": null, "address": "1 Market St, SF, CA 94105"}, "location":
+        {"lat": 37.794357, "bearing": null, "lng": -122.394982}}]}'
+    http_version: 
+  recorded_at: Thu, 09 Mar 2017 03:48:05 GMT
+recorded_with: VCR 3.0.3
