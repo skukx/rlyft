@@ -1,4 +1,5 @@
-# Lyft
+# RLyft
+[![Gem Version](https://badge.fury.io/rb/rlyft.svg)](https://badge.fury.io/rb/rlyft)
 [![CircleCI](https://circleci.com/gh/skukx/rlyft.svg?style=shield)](https://circleci.com/gh/skukx/rlyft)
 
 Simple wrapper for interacting with Lyft's public api.
@@ -8,7 +9,7 @@ Simple wrapper for interacting with Lyft's public api.
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'lyft', git: 'git@github.com:skukx/lyft.git'
+gem 'rlyft'
 ```
 
 And then execute:
@@ -139,7 +140,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/lyft.
+Bug reports and pull requests are welcome on GitHub at https://github.com/skukx/lyft.
 
 
 ## License
