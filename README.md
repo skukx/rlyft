@@ -32,10 +32,10 @@ Get Access Token:
 
 ```ruby
 # Public token
-client.authentication.retrieve_access_token
+client.oauth.retrieve_access_token
 
 # When using oauth.
-client.authentication.retrieve_access_token authorization_code: 'auth_code'
+client.oauth.retrieve_access_token authorization_code: 'auth_code'
 ```
 
 Calculate Lyft cost.
