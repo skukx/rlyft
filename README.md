@@ -1,4 +1,5 @@
 # Lyft
+[![CircleCI](https://circleci.com/gh/skukx/rlyft.svg?style=shield)](https://circleci.com/gh/skukx/rlyft)
 
 Simple wrapper for interacting with Lyft's public api.
 
