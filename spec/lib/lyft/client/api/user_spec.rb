@@ -21,9 +21,7 @@ describe Lyft::Client::Api::User do
 
   its(:class) { is_expected.to be_const_defined :ENDPOINTS }
 
-  describe '#ride_history' do
-    use_vcr_cassette
-
+  describe '#ride_history', :vcr do
     let(:start_time) { '2015-12-01T21:04:22Z' }
     let(:args) do
       {
@@ -37,9 +35,7 @@ describe Lyft::Client::Api::User do
     it { expect(subject.success?).to eql true }
   end
 
-  describe '#profile' do
-    use_vcr_cassette
-
+  describe '#profile', :vcr do
     let(:args) do
       {
         access_token: access_token

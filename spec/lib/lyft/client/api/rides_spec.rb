@@ -36,9 +36,7 @@ describe Lyft::Client::Api::Rides do
 
   its(:class) { is_expected.to be_const_defined :ENDPOINTS }
 
-  describe '#request' do
-    use_vcr_cassette
-
+  describe '#request', :vcr do
     let(:args) do
       {
         origin: {
@@ -62,9 +60,7 @@ describe Lyft::Client::Api::Rides do
   context 'When ride id obtained' do
     let(:ride_id) { request_ride(client, access_token).ride_id }
 
-    describe '#destination' do
-      use_vcr_cassette
-
+    describe '#destination', :vcr do
       let(:args) do
         {
           lat: 37.7972,
@@ -79,9 +75,7 @@ describe Lyft::Client::Api::Rides do
       it { expect(subject.success?).to eql true }
     end
 
-    describe '#cancel' do
-      use_vcr_cassette
-
+    describe '#cancel', :vcr do
       let(:args) do
         {
           ride_id: ride_id,
@@ -94,9 +88,7 @@ describe Lyft::Client::Api::Rides do
       it { expect(subject.success?).to eql true }
     end
 
-    describe '#details' do
-      use_vcr_cassette
-
+    describe '#details', :vcr do
       let(:args) do
         {
           ride_id: ride_id,
@@ -109,9 +101,7 @@ describe Lyft::Client::Api::Rides do
       it { expect(subject.success?).to eql true }
     end
 
-    context 'When dropped off' do
-      use_vcr_cassette
-
+    context 'When dropped off', :vcr do
       before do
         flow = [
           Lyft::Ride::Status::ACCEPTED,
@@ -127,9 +117,7 @@ describe Lyft::Client::Api::Rides do
         end
       end
 
-      describe '#rate' do
-        use_vcr_cassette
-
+      describe '#rate', :vcr do
         let(:args) do
           {
             ride_id: ride_id,
@@ -147,9 +135,7 @@ describe Lyft::Client::Api::Rides do
         it { expect(subject.success?).to eql true }
       end
 
-      describe '#receipt' do
-        use_vcr_cassette
-
+      describe '#receipt', :vcr do
         let(:args) do
           {
             ride_id: ride_id,

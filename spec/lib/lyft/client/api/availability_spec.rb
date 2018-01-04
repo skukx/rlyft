@@ -21,9 +21,7 @@ describe Lyft::Client::Api::Availability do
 
   its(:class) { is_expected.to be_const_defined :ENDPOINTS }
 
-  describe '#cost' do
-    use_vcr_cassette
-
+  describe '#cost', :vcr do
     let(:args) do
       {
         start_lat: 37.7772,
@@ -39,9 +37,7 @@ describe Lyft::Client::Api::Availability do
     it { expect(subject.success?).to eql true }
   end
 
-  describe '#eta' do
-    use_vcr_cassette
-
+  describe '#eta', :vcr do
     let(:args) do
       {
         lat: 37.7772,
@@ -55,9 +51,7 @@ describe Lyft::Client::Api::Availability do
     it { expect(subject.success?).to eql true }
   end
 
-  describe '#nearby_drivers' do
-    use_vcr_cassette
-
+  describe '#nearby_drivers', :vcr do
     let(:args) do
       {
         lat: 37.7772,
@@ -71,9 +65,7 @@ describe Lyft::Client::Api::Availability do
     it { expect(subject.success?).to eql true }
   end
 
-  describe '#ride_types' do
-    use_vcr_cassette
-
+  describe '#ride_types', :vcr do
     let(:args) do
       {
         lat: 37.7772,
