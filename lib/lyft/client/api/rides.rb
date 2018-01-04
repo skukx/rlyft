@@ -89,7 +89,7 @@ module Lyft
             options: { body: args.to_json }
           )
         end
-        alias_method :tip, :rate
+        alias tip rate
 
         ##
         # Get receipt for ride
