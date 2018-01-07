@@ -9,7 +9,7 @@ Simple wrapper for interacting with Lyft's public api.
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'rlyft'
+gem 'rlyft', require 'lyft'
 ```
 
 And then execute:
