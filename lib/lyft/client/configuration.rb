@@ -1,7 +1,8 @@
 module Lyft
   class Client
     class Configuration
-      attr_reader :client_id, :client_secret, :debug_output, :use_sandbox
+      attr_accessor :access_token
+      attr_reader :client_id, :client_secret, :headers, :use_sandbox
 
       def initialize(args = {})
         raise ArgumentError, ':client_id is missing' if args[:client_id].blank?
@@ -10,7 +11,7 @@ module Lyft
         @client_id = args.fetch(:client_id)
         @client_secret = args.fetch(:client_secret)
         @use_sandbox = args.fetch(:use_sandbox, false)
-        @debug_output = args[:debug_output]
+        @headers = args[:headers] || {}
 
         @client_secret = "SANDBOX-#{@client_secret}" if sandbox?
       end

@@ -4,11 +4,16 @@ module Lyft
   #
   class Client
     ##
+    # The configuration for the Lyft Client
+    # @return [Lyft::Api::Configuration]
+    #
+    attr_reader :configuration
+
+    ##
     # Keep track of what we are namespacing.
     #
-    @@namespaces = []
-
-    attr_reader :configuration
+    @namespaces = []
+    @connection = nil
 
     ##
     # Defines a method to access class instance.
@@ -19,18 +24,7 @@ module Lyft
     def self.namespace(name)
       converted = name.to_s.split('_').map(&:capitalize).join
       klass = Lyft::Client::Api.const_get(converted)
-      create_instance(klass)
-    end
-
-    ##
-    # Dynamically creates an attr_reader for each client space
-    # and sets it to the initalized values
-    #
-    def self.create_instance(klass)
-      reader = klass.to_s.split('::').last.underscore
-      @@namespaces << reader
-
-      define_method(reader.to_sym) { klass.new @@config }
+      @namespaces << klass
     end
 
     ##
@@ -67,7 +61,17 @@ module Lyft
     #
     def initialize(args = {})
       @configuration = Lyft::Client::Configuration.new args
-      @@config = @configuration
+      build_namespaces
+    end
+
+    private
+
+    def build_namespaces
+      namespaces = self.class.instance_variable_get(:@namespaces)
+      namespaces.each do |klass|
+        reader = klass.to_s.split('::').last.underscore
+        self.class.send(:define_method, reader.to_sym) { klass.new @configuration }
+      end
     end
   end
 end

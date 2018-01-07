@@ -14,8 +14,19 @@ describe Lyft::Client::Api::Base do
   let(:use_sandbox)   { true }
 
   let(:config) { Lyft::Client::Configuration.new options }
-  let(:client) { Lyft::Client::Api::Base.new config }
-  let(:access_token) { 'fake_token' }
+  let(:instance) { described_class.new config }
 
-  subject { client }
+  subject { instance }
+
+  its(:configuration) { is_expected.to eql config }
+
+  describe '#connection' do
+    context 'When no access_token is passed in' do
+      it 'should use basic auth'
+    end
+
+    context 'When access_token is passed in' do
+      it 'should use authorization header'
+    end
+  end
 end

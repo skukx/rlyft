@@ -1,23 +1,20 @@
-# Development gems
-require 'pry'
-
 # 3rd party Libraries
-require 'httparty'
 require 'active_support/all'
-require 'hashie'
+require 'faraday'
+require 'faraday_middleware'
 
+require 'lyft/response'
 require 'lyft/ride'
 require 'lyft/version'
 
-require 'lyft/client/configuration'
-require 'lyft/client/mashed_parser'
-
+require 'lyft/client/api'
 require 'lyft/client/api/base'
 require 'lyft/client/api/availability'
 require 'lyft/client/api/oauth'
+require 'lyft/client/api/oauth/grant_type'
+require 'lyft/client/api/oauth/scope'
 require 'lyft/client/api/rides'
 require 'lyft/client/api/user'
 
 require 'lyft/client'
-
-module Lyft; end
+require 'lyft/client/configuration'
