@@ -9,8 +9,8 @@ describe Lyft::Client do
     }
   end
 
-  let(:client) { Lyft::Client.new options }
-  subject { client }
+  let(:instance) { Lyft::Client.new options }
+  subject { instance }
 
   it { is_expected.to respond_to :oauth }
   it { is_expected.to respond_to :availability }
@@ -18,22 +18,22 @@ describe Lyft::Client do
   it { is_expected.to respond_to :user }
 
   describe '#oauth' do
-    subject { client.oauth }
+    subject { instance.oauth }
     it { is_expected.to be_kind_of Lyft::Client::Api::Oauth }
   end
 
   describe '#availability' do
-    subject { client.availability }
+    subject { instance.availability }
     it { is_expected.to be_kind_of Lyft::Client::Api::Availability }
   end
 
   describe '#rides' do
-    subject { client.rides }
+    subject { instance.rides }
     it { is_expected.to be_kind_of Lyft::Client::Api::Rides }
   end
 
   describe '#user' do
-    subject { client.user }
+    subject { instance.user }
     it { is_expected.to be_kind_of Lyft::Client::Api::User }
   end
 end

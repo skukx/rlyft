@@ -11,3 +11,6 @@ lyft_setup.rb
 
 # Ignore application configuration
 /config/application.yml
+
+# Ignore setup script
+/lyft_setup.rb

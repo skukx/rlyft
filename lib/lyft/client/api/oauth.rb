@@ -7,21 +7,6 @@ module Lyft
       #
       class Oauth < Lyft::Client::Api::Base
         ##
-        # Authentication Endpoints
-        #
-        ENDPOINTS = {
-          access_token: '/oauth/token'
-        }
-
-        headers 'Content-Type': 'application/json',
-                'Accept': 'application/json'
-
-        def initialize(config)
-          super
-          set_default_headers
-        end
-
-        ##
         # Retrieves access token from the server.
         #
         # @example Get public access token.
@@ -33,39 +18,32 @@ module Lyft
         #   resp.success?
         #
         # @param [String] authorization_code
+        # @param [String] scope
         # @return [HTTParty::Response]
         #
-        def retrieve_access_token(authorization_code: nil)
-          path = path_for(:access_token)
-
-          grant_type = get_grant_type(authorization_code.present?)
-          body = request_body(
-            grant_type: grant_type,
-            authorization_code: authorization_code
-          )
-
-          self.class.post(path, body: body.to_json)
+        def retrieve_access_token(authorization_code: nil, scope: Scope::PUBLIC)
+          body = build_auth_body(authorization_code, scope)
+          resp = connection.post '/oauth/token', body
+          handle_response(resp)
         end
 
         private
 
-        def get_grant_type(has_auth_code)
-          return 'authorization_code' if has_auth_code
-          'client_credentials'
-        end
-
-        def request_body(grant_type:, authorization_code:, scope: 'public')
+        def build_auth_body(authorization_code, scope)
           body = {}
-          body[:grant_type] = grant_type
-          body[:scope] = scope unless authorization_code.present?
-          body[:code] = authorization_code if authorization_code.present?
+          body[:grant_type] = grant_type(authorization_code)
+          if authorization_code.present?
+            body[:code] = authorization_code
+          else
+            body[:scope] = scope
+          end
 
           body
         end
 
-        def set_default_headers
-          self.class.default_options[:headers].delete(:Authorization)
-          self.class.basic_auth @configuration.client_id, @configuration.client_secret
+        def grant_type(authorization_code)
+          return GrantType::AUTHORIZATION_CODE if authorization_code
+          GrantType::CLIENT_CREDENTIALS
         end
       end
     end

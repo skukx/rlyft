@@ -2,45 +2,38 @@ module Lyft
   class Client
     module Api
       class User < Lyft::Client::Api::Base
-        ENDPOINTS = {
-          history: "/#{API_VERSION}/rides",
-          profile: "/#{API_VERSION}/profile"
-        }
-
         ##
         # Get ride history
         #
-        # @param [Hash] args
-        # @option args [String] :access_token (*required*)
-        # @option args [DateTime] :start_time (*required*)
-        # @option args [DateTime] :end_time
-        # @option args [Integer] :limit
+        # @param access_token [String] The access_token (*required*)
+        # @param params [Hash] The lyft parameters.
+        # @option params [DateTime] :start_time (*required*)
+        # @option params [DateTime] :end_time
+        # @option params [Integer] :limit
         #
-        def ride_history(args = {})
-          args.delete(:end_time) if args[:end_time].blank?
-          args.delete(:limit) if args[:limit].blank?
+        def ride_history(access_token:, params: {})
+          params.delete(:end_time) if params[:end_time].blank?
+          params.delete(:limit) if params[:limit].blank?
 
-          make_request(
-            http_method: :get,
-            endpoint: path_for(:history),
-            access_token: args.delete(:access_token),
-            options: { query: args }
-          )
+          resp = connection(access_token).get do |req|
+            req.url "/#{Api::VERSION}/rides"
+            req.params = params
+          end
+          handle_response(resp)
         end
 
         ##
         # Get user's profile
         #
-        # @param [Hash] args
-        # @option args [String] :access_token (*required*)
+        # @param access_token [String] The access_token (*required*)
+        # @param params [Hash] The lyft parameters.
         #
-        def profile(args = {})
-          make_request(
-            http_method: :get,
-            endpoint: path_for(:profile),
-            access_token: args.delete(:access_token),
-            options: { query: args }
-          )
+        def profile(access_token:, params: {})
+          resp = connection(access_token).get do |req|
+            req.url "/#{Api::VERSION}/profile"
+            req.params = params
+          end
+          handle_response(resp)
         end
       end
     end

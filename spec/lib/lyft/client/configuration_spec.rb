@@ -17,13 +17,12 @@ describe Lyft::Client::Configuration do
 
   it { is_expected.to respond_to :client_id }
   it { is_expected.to respond_to :client_secret }
-  it { is_expected.to respond_to :debug_output }
   it { is_expected.to respond_to :use_sandbox }
 
   context 'When client_id is blank' do
     let(:client_id) { '' }
     subject { -> { config } }
-    
+
     it { is_expected.to raise_error ArgumentError }
   end
 
