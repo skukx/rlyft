@@ -4,6 +4,9 @@
 
 Simple wrapper for interacting with Lyft's public api.
 
+## Breaking Changes
+  See https://github.com/skukx/rlyft/pull/6
+
 ## Installation
 
 Add this line to your application's Gemfile:
